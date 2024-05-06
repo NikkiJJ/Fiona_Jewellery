@@ -1,1 +1,6 @@
 <h1>Jewellery item: <%= @jewellery_item.name %></h1>
+
+  <%= link_to "Delete",
+    jewellery_item_path(@jewellery_item),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>

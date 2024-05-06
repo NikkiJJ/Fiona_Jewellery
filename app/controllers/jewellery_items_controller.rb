@@ -33,6 +33,12 @@ class JewelleryItemsController < ApplicationController
     redirect_to jewellery_item_path(@jewellery_item)
   end
 
+  def destroy
+    @jewellery_item = JewelleryItem.find(params[:id])
+    @jewellery_item.destroy
+    redirect_to jewellery_items_path, status: :see_other
+  end
+
   private
 
   def jewellery_item_params
