@@ -12,7 +12,7 @@ class JewelleryItemsController < ApplicationController
   def new
     @jewellery_item = JewelleryItem.new
   end
-  
+
   def create
     @jewellery_item = JewelleryItem.new(jewellery_item_params)
     @jewellery_item.user = User.first  # Just for testing, replace with actual user from session later
@@ -23,7 +23,15 @@ class JewelleryItemsController < ApplicationController
     end
   end
 
+  def edit
+    @jewellery_item = JewelleryItem.find(params[:id])
+  end
 
+  def update
+    @jewellery_item = JewelleryItem.find(params[:id])
+    @jewellery_item.update(jewellery_item_params)
+    redirect_to jewellery_item_path(@jewellery_item)
+  end
 
   private
 
