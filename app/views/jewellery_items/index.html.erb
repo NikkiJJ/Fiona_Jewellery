@@ -2,6 +2,6 @@
 
 <ul>
   <% @jewellery_items.each do |jewellery| %>
-    <li><%= jewellery.name   %></li>
+    <li><%= link_to jewellery.name, jewellery_item_path(jewellery)  %></li>
   <% end %>
 </ul>
