@@ -1,12 +1,12 @@
 class JewelleryItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_jewellery_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @jewellery_items = JewelleryItem.all
   end
 
   def show
-    @jewellery_item = JewelleryItem.find(params[:id])
   end
 
   def new
@@ -28,13 +28,11 @@ class JewelleryItemsController < ApplicationController
   end
 
   def update
-    @jewellery_item = JewelleryItem.find(params[:id])
     @jewellery_item.update(jewellery_item_params)
     redirect_to jewellery_item_path(@jewellery_item)
   end
 
   def destroy
-    @jewellery_item = JewelleryItem.find(params[:id])
     @jewellery_item.destroy
     redirect_to jewellery_items_path, status: :see_other
   end
@@ -43,5 +41,9 @@ class JewelleryItemsController < ApplicationController
 
   def jewellery_item_params
     params.require(:jewellery_item).permit(:name, :description, :price, :jewellery_type, :user_id)
+  end
+
+  def set_restaurant
+    @jewellery_item = JewelleryItem.find(params[:id])
   end
 end
