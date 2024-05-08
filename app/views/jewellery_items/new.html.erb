@@ -1,17 +1,6 @@
 <h1>Create a new jewellery item</h1>
 
-<%= form_for (@jewellery_item) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :price %>
-  <%= f.number_field :price %>
-  <%= f.label :jewellery_type %>
-  <%= f.text_field :jewellery_type %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
-<% end %>
+<%= render "form", jewellery_item: @jewellery_item %>
 
 <% if @jewellery_item.errors.any? %>
   <div id="error_explanation">
